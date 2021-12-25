@@ -35,13 +35,13 @@ message Movie {
 }
 message RateRecord {
     Movie movie = 1;
-    float rating = 2;
+    double rating = 2;
 }
 
 message RateReq {
     string movie_id = 1;
     string user_id = 2;
-    float rating = 3;
+    double rating = 3;
 }
 message RateResp {
     BaseResp base_resp = 1;
@@ -62,7 +62,7 @@ message QueryMovieRatingReq {
     repeated string movie_id_list = 2;
 }
 message QueryMovieRatingResp {
-    map<string,float> movie_id2_personal_rating = 1;
+    map<string,double> movie_id2_personal_rating = 1;
 }
 
 service RatingService {
