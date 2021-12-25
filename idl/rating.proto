@@ -62,7 +62,8 @@ message QueryMovieRatingReq {
     repeated string movie_id_list = 2;
 }
 message QueryMovieRatingResp {
-    map<string,double> movie_id2_personal_rating = 1;
+    BaseResp base_resp = 1;
+    map<string,double> movie_id2_personal_rating = 2;
 }
 
 service RatingService {

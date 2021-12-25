@@ -8,6 +8,7 @@ import (
 	"rating/config"
 	"rating/idl/gen/rating"
 	"rating/model"
+	"rating/rpc"
 )
 
 func main() {
@@ -15,6 +16,9 @@ func main() {
 		panic(err)
 	}
 	if err := model.InitModel(); err != nil {
+		panic(err)
+	}
+	if err := rpc.InitRpcClients(); err != nil {
 		panic(err)
 	}
 
