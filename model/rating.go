@@ -124,7 +124,7 @@ func (*RatingDao) QueryRecentRatings(ctx context.Context, userID string, page, o
 		return nil, 0, err
 	}
 
-	nRecords, err := GetClient().Collection(CollectionRating).CountDocuments(ctx, nil)
+	nRecords, err := GetClient().Collection(CollectionRating).CountDocuments(ctx, bson.D{{"user_id", userObjectID}})
 	if err != nil {
 		return nil, 0, err
 	}
