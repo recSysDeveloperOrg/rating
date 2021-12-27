@@ -85,6 +85,11 @@ func (*RatingService) rate(ctx *RatingContext) {
 			ctx.ErrCode = BuildErrCode(err, RetWriteRepoErr)
 			return
 		}
+	}else {
+		if err := model.NewUserRatingMetaDao().IncUserRating(ctx.Ctx, ctx.Req.UserId, 1); err != nil {
+			ctx.ErrCode = BuildErrCode(err, RetWriteRepoErr)
+			return
+		}
 	}
 
 	if _, err := rpc.ModifyMovieRating(ctx.Ctx, ctx.Req.MovieId, nModify, isNewUser); err != nil {
