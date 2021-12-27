@@ -2,9 +2,7 @@ package rpc
 
 import (
 	"context"
-	"errors"
 	"log"
-	"rating/constant"
 	"rating/idl/gen/movie"
 )
 
@@ -19,9 +17,6 @@ func ModifyMovieRating(ctx context.Context, movieID string, nModify float64, isN
 	resp, err := MovieClient.ModifyMovieRating(ctx, req)
 	if err != nil {
 		return nil, err
-	}
-	if resp.BaseResp == nil || resp.BaseResp.ErrNo != constant.RetSuccess.Code {
-		return nil, errors.New("resp ErrNo not success")
 	}
 
 	return resp, nil
